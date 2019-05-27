@@ -1,4 +1,4 @@
-requests==2.20.0
+requests==2.18.4
 apiai==1.2.3
 python_telegram==0.10.0
 beautifulsoup4==4.7.1
