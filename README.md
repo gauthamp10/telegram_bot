@@ -19,3 +19,15 @@ A chatbot and service agent with the following features:
 And you could always chat with me when you are bored.
 
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
+
+
+### Author
+
+ **Gautham Prakash**
+ 
+ My other projects:[github.com/gauthamp10](https://gauthamp10.github.io/)
+
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
