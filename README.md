@@ -2,7 +2,7 @@
 A chatbot agent👨‍💻  which offers various web services  plus the ability to chat 🗨with you for long 💤 . 
 
 
-<img src="https://github.com/gauthamp10/telegram_bot/blob/master/src/res/logo.jpg" width="150" height="150" />
+<a href="https://telegram.me/bulo98_bot"><img src="https://github.com/gauthamp10/telegram_bot/blob/master/src/res/logo.jpg" width="100" height="100" /></a>
 
 A chatbot and service agent with the following features:
 
