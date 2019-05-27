@@ -6,15 +6,15 @@ A chatbot agent👨‍💻  which offers various web services  plus the ability 
 
 A chatbot and service agent with the following features:
 
-▶ Random HD Wallpaper
-▶ Random GIF
-▶ Random Joke
-▶ Random Video
-▶ Random Quote
-▶ Random Profile
-▶ Currency Rates
-▶ Bitcoin Live Price
-▶ Web Results
+- ▶ Random HD Wallpaper
+- ▶ Random GIF
+- ▶ Random Joke
+- ▶ Random Video
+- ▶ Random Quote
+- ▶ Random Profile
+- ▶ Currency Rates
+- ▶ Bitcoin Live Price
+- ▶ Web Results
 
 
 And you could chat with me when you are bored.
