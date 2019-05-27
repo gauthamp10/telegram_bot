@@ -1,4 +1,4 @@
-# telegram_bot
+# telegram_bot (RandomGod)
 A chatbot agent👨‍💻  which offers various web services  plus the ability to chat 🗨with you for long 💤 . 
 
-<a href="https://telegram.me/bulo98_bot">RandomGod</a>
+**See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
