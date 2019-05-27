@@ -16,6 +16,6 @@ A chatbot and service agent with the following features:
 - Bitcoin Live Price
 - Web Results
 
-And you could chat with me when you are bored.
+And you could always chat with me when you are bored.
 
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
