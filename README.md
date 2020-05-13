@@ -18,6 +18,8 @@ A chatbot and service agent with the following features:
 
 And you could always chat with me when you are bored.
 
+![screenshot](https://imgur.com/OGvMdXI.png)
+
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
 
 
