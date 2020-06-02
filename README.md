@@ -22,6 +22,17 @@ And you could always chat with me when you are bored.
 
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
 
+
+### Buid your own
+
+Add your telegram bot and google dialog flow token inside 'src/main.py' and run
+
+```
+docker build -t telegram-bot .
+docker run --rm telegram-bot
+
+```
+
 ### Author
 
  **Gautham Prakash**
