@@ -22,6 +22,7 @@ And you could always chat with me when you are bored.
 
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
 
+[![HitCount](http://hits.dwyl.com/gauthamp10/telegram_bot.svg)](http://hits.dwyl.com/gauthamp10/telegram_bot)
 
 ### Author
 
