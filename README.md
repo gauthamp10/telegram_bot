@@ -1,4 +1,4 @@
-# telegram_bot (RandomGod)
+# telegram_bot (RandomGod) [![HitCount](http://hits.dwyl.com/gauthamp10/telegram_bot.svg)](http://hits.dwyl.com/gauthamp10/telegram_bot)
 A chatbot agent👨‍💻  which offers various web services  plus the ability to chat 🗨with you for long 💤 . 
 
 
@@ -21,8 +21,6 @@ And you could always chat with me when you are bored.
 ![screenshot](https://imgur.com/OGvMdXI.png)
 
 **See it in action** <a href="https://telegram.me/bulo98_bot">RandomGod</a>
-
-[![HitCount](http://hits.dwyl.com/gauthamp10/telegram_bot.svg)](http://hits.dwyl.com/gauthamp10/telegram_bot)
 
 ### Author
 
