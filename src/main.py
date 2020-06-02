@@ -1,165 +1,138 @@
+#testing the bot api
 import time
 import random
 import telegram
-import requests
 import apiai,json
-from bs4 import BeautifulSoup
-from telegram.ext import Updater,CommandHandler,MessageHandler,Filters
+from telegram import ParseMode
+from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, Filters
+from telegram.chataction import ChatAction
+from telegram.ext.dispatcher import run_async
 from modules import *
 
 
-
-#--------------------------------------------------------
-#Functions for each command
-#--------------------------------------------------------
-
-
-def gif(bot,update):
-    data=dict()
-    global db,user,root    
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    gif,thumb,caption=get_gif()
-    bot.send_animation(chat_id, animation=gif, duration=10, width=536, height=354, thumb=thumb, caption=caption)
-
-
-def meme(bot,update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    meme=get_meme()
-    bot.send_photo(chat_id=chat_id, photo=meme)
-
-    
-
-def joke(bot,update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    joke = get_joke()
-    bot.send_message(chat_id=chat_id, text=joke)
-
-   
-
-def youtube(bot,update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    link=get_youtube()
-    bot.send_message(chat_id=chat_id, text="[ ]("+link+").", parse_mode=telegram.ParseMode.MARKDOWN)
-
-
-def wallpaper(bot, update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    image_url = get_image()
-    bot.send_photo(chat_id=chat_id, photo=image_url)
-
-       
-def currency(bot, update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    currency=get_currency()
-    bot.send_message(chat_id=chat_id, text=currency)
-
-
-def bitcoin(bot,update):
-    data=dict()
-    global db,user,root
-    chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    bitcoin=get_bitcoin()
-    bot.send_message(chat_id=chat_id, text=bitcoin)
-
-
-
-
-def start(bot,update):
+@run_async
+def start(update,context):
     try:
-        data=dict()
-        global db,user,root
         chat_id = update.message.chat_id
-        username=update.message.from_user.first_name
-        bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-        bot.send_message(chat_id=chat_id, text="Hai.. "+username+"\n\nI'm am Bulo98 your personal chatbot, Lets get to bussiness...")
+        username=update.message.from_user
+        context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+        context.bot.send_message(chat_id=chat_id, text="Hai.. {}{}\n\nI'm am Bulo98 your personal chatbot, Lets get to bussiness...".format(username['first_name'],username['last_name']))
         help_text=print_help()   
         time.sleep(2.0)
-        bot.send_message(chat_id=chat_id, text=help_text) 
+        context.bot.send_message(chat_id=chat_id, text=help_text) 
     except Exception as e:
-        print("Error!: ",str(e))    
+        print("Error!: ",str(e)) 
 
-def profile_gen(bot,update):
-    data=dict()
-    global db,user,root
+@run_async
+def gif(update,context):
     chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    gif,thumb,caption=get_gif()
+    context.bot.send_animation(chat_id, animation=gif, duration=10, width=536, height=354, thumb=thumb, caption=caption)
+
+@run_async
+def meme(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    meme=get_meme()
+    context.bot.send_photo(chat_id=chat_id, photo=meme)
+
+    
+@run_async
+def joke(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    joke = get_joke()
+    context.bot.send_message(chat_id=chat_id, text=joke)
+
+   
+@run_async
+def youtube(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    link=get_youtube()
+    context.bot.send_message(chat_id=chat_id, text="[ ]("+link+").", parse_mode=ParseMode.MARKDOWN)
+   
+@run_async
+def wallpaper(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    image_url = get_image()
+    context.bot.send_photo(chat_id=chat_id, photo=image_url)
+   
+@run_async       
+def currency(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    currency=get_currency()
+    context.bot.send_message(chat_id=chat_id, text=currency)
+
+@run_async    
+def bitcoin(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    bitcoin=get_bitcoin()
+    context.bot.send_message(chat_id=chat_id, text=bitcoin)
+   
+           
+@run_async
+def profile_gen(update,context):
+    chat_id = update.message.chat_id
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
     profile=get_fake_data()
-    bot.send_message(chat_id=chat_id, text=profile)
-
-
-def quote(bot,update):
-    data=dict()
-    global db,user,root
+    context.bot.send_message(chat_id=chat_id, text=profile)
+ 
+@run_async   
+def quote(update,context):
     chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
-    quote=get_quote()
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
+    quote = get_quote()
     lines="               \n"
     qt='"'
-    bot.send_message(chat_id=chat_id, text=qt+quote['Quote']+qt+"\n"+lines+"By: "+quote['Author']+"\n"+lines+"Category: "+quote['Category'])
+    context.bot.send_message(chat_id=chat_id, text=qt+quote['content']+qt+"\n"+lines+"By: "+quote['author'])
+    
 
-
-
-def not_command(bot,update):
-    data=dict()
-    global db,user,root
+@run_async
+def not_command(update,context):
     chat_id = update.message.chat_id
-    username=update.message.from_user.first_name
-    bot.send_chat_action(chat_id=chat_id, action=telegram.ChatAction.TYPING)
+    username=update.message.from_user
+    context.bot.send_chat_action(chat_id=update.effective_chat.id, action=ChatAction.TYPING)
     user_response=update.message.text
     user_response=user_response.lower()
     print(user_response)
-    request=apiai.ApiAI('Your-Dialog-flow-api-key-goes-here').text_request()
+    request=apiai.ApiAI('Google-Dialogflow-Apikey').text_request()
     request.lang='en'
-    request.session_id='any-random-number-with-string'
+    request.session_id='RandomGod2367'
     request.query=user_response
     responseJson=json.loads(request.getresponse().read().decode('utf-8'))
     response=responseJson['result']['fulfillment']['speech']
     if response:
-        bot.send_message(chat_id=update.message.chat_id,text=response)
+        context.bot.send_message(chat_id=update.message.chat_id,text=response)
     else:
         response=search(str(user_response))
+        print(response)
         if response=="":
             no_result=["Sorry...I guess my 6th sense is down!","Sorry..there is something wrong with my systems.","I can't fetch you any infomation on that!","Pardon Me...I don't know.","I have no answers for that.","Sorry for dissappointing you..I'll be better."]
             response=str(random.choice(no_result))
-            bot.send_message(chat_id=update.message.chat_id,text=str(response))
+            context.bot.send_message(chat_id=update.message.chat_id,text=str(response))
         else:
-            bot.send_message(chat_id=update.message.chat_id,text=str(response))
-               
+            context.bot.send_message(chat_id=update.message.chat_id,text=str(response))          
 
 
 def main():
-    TOKEN = "Your-telegram-bot-token"
+    TOKEN = "Your-Telegram-Bot-Token"
 
-    updater = Updater(TOKEN)
+    updater = Updater(TOKEN, use_context=True)
     dp = updater.dispatcher
-    text_message_handler=MessageHandler(Filters.text,not_command)
-    dp.add_handler(text_message_handler)   #Following are command handlers
     dp.add_handler(CommandHandler('start',start))
     dp.add_handler(CommandHandler('wallpaper',wallpaper))
     dp.add_handler(CommandHandler('bitcoin',bitcoin))
@@ -170,12 +143,10 @@ def main():
     dp.add_handler(CommandHandler('video',youtube))
     dp.add_handler(CommandHandler('profile',profile_gen))
     dp.add_handler(CommandHandler('quote',quote))
-  
-
-    updater.start_polling(clean=True) #Async happens here
+    text_message_handler=MessageHandler(Filters.text,not_command)
+    dp.add_handler(text_message_handler)
+    updater.start_polling()
     updater.idle()
     
-
-
 if __name__ == '__main__':
     main()

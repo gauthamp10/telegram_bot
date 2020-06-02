@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from faker import Faker
 fake = Faker()
+
 #----------------------------------------------------------------
 def print_help():
     text='-------Services Offered--------\n'
@@ -17,6 +18,11 @@ def flag(code):
     return chr(ord(code[0]) + OFFSET) + chr(ord(code[1]) + OFFSET)
 
 #-----------------------------------------------------------------
+
+def get_quote():
+    data = requests.get('http://api.quotable.io/random').json()
+    return data
+
 
 def get_fake_data():
     try:
@@ -110,7 +116,7 @@ def get_meme():
 def get_gif():
     try:
         while True:
-            gif=requests.get("https://api.giphy.com/v1/gifs/random?api_key=YOUR-GIPHY_API-KEY&tag=&rating=G").json()
+            gif=requests.get("https://api.giphy.com/v1/gifs/random?api_key=ZczhuGHOz7HDoDM4tUkRAdvyILcuR3RW&tag=&rating=G").json()
             gif_image=gif['data']['image_url']
             thumb=gif['data']['images']['480w_still']['url']
             caption=gif['data']['title']
@@ -199,13 +205,8 @@ def get_book_data(query):
     return book_data,imageLinks
 
 
+
+
 def get_ist():
     ist=requests.get('http://worldtimeapi.org/api/timezone/Asia/Kolkata').json()
     return ist["datetime"]
-
-
-def get_quote():
-    with open('res/quotes.json') as f:
-        data = json.load(f)
-        data=random.choice(data)
-    return data
